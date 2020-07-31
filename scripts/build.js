@@ -22,12 +22,12 @@ const copyPublicFolder = () => {
 }
 const build = () => {
   console.log('Creating an optimized production build...');
-  console.time('Build Time');
+  console.time('Build done in');
   deleteDistFolder();
   copyPublicFolder();
   compiler.run((err, stats) => {
     if (err) console.log(chalk.yello(err));
-    console.timeEnd('Build Time');  
+    console.timeEnd('Build done in');  
     console.log(chalk.green('Compiled successfully.\n'));
   }); 
 }
