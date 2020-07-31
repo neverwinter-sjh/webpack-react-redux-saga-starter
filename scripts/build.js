@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
+const chalk = require('react-dev-utils/chalk');
 const webpack = require('webpack');
 const prodConfig = require('../webpack.prod.js');
 const appDirectory = fs.realpathSync(process.cwd());
@@ -10,20 +11,33 @@ const paths = {
   appHtml: resolveApp('public/index.html')
 }
 const compiler = webpack(prodConfig);
-
-function deleteDistFolder() {
+const deleteDistFolder = () => {
   fs.rmdirSync(paths.appBuild, { recursive: true });
 }
-
-function copyPublicFolder() {
+const copyPublicFolder = () => {
   fs.copySync(paths.appPublic, paths.appBuild, {
     dereference: true,
     filter: file => file !== paths.appHtml,
   });
 }
+const build = () => {
+  console.log('Creating an optimized production build...');
+  console.time('Build Time');
+  deleteDistFolder();
+  copyPublicFolder();
+  compiler.run((err, stats) => {
+    if (err) console.log(chalk.yello(err));
+    console.timeEnd('Build Time');  
+    console.log(chalk.green('Compiled successfully.\n'));
+  }); 
+}
 
-deleteDistFolder();
-copyPublicFolder();
-compiler.run();
+build();
+
+
+
+
+
+
 
 
