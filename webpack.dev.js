@@ -8,6 +8,10 @@ const port = process.env.PORT || 3000;
 module.exports = merge(common, {
   // 개발환경
   mode: 'development',
+  entry: [
+    'react-hot-loader/patch',
+    './src/index.js',
+  ],
 
   // 모듈 설정
   module: {

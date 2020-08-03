@@ -35,7 +35,7 @@ module.exports = {
       // 이미지 로더
       {
         test: /\.(png|svg|jpg|gif)$/,
-        loader:'url-loader',
+        loader: 'url-loader',
         options: {
           limit: 10000,
           name: '[name].[hash:7].[ext]',
