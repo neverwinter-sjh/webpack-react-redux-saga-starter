@@ -1,10 +1,25 @@
 import React from 'react';
+import { Route, Switch, Linkm, } from 'react-router-dom';
+import CounterContainer from 'containers/CounterContainer';
+import Home from 'routes/Home';
+import About from 'routes/About';
 
 const App = () => {
   return (
     <div>
-      <h1 className="title">웹팩 설정하기</h1>
-      <div>리액트 앱 웹팩으로 설정</div>
+      <CounterContainer />
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+      </ul>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/about" component={About} />
+      </Switch>
     </div>
   )
 };
