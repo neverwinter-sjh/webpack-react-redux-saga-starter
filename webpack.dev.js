@@ -2,9 +2,6 @@ const { merge } = require('webpack-merge');
 const path = require('path');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const port = process.env.PORT || 3000;
-const chalk = require('react-dev-utils/chalk');
-const clearConsole = require('react-dev-utils/clearConsole');
 
 module.exports = merge(common, {
   // 개발환경
@@ -58,7 +55,8 @@ module.exports = merge(common, {
       components: path.resolve(__dirname, 'src/components'),
       containers: path.resolve(__dirname, 'src/containers'),
       modules: path.resolve(__dirname, 'src/modules'),
-      routes: path.resolve(__dirname, 'src/routes')
+      routes: path.resolve(__dirname, 'src/routes'),
+      assets: path.resolve(__dirname, 'src/assets')
     }
   }
 });

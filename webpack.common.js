@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const port = process.env.PORT || 3000;
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   // 앱 시작 js 파일
@@ -53,10 +53,6 @@ module.exports = {
           name: '[name].[hash:7].[ext]',
           esModule: false
         }
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        loader: 'file-loader'
       }
     ],
   },
@@ -64,6 +60,13 @@ module.exports = {
     // 템플레이트를 사용할 수 있도록 설정
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+    }),
+    new Dotenv({      
+      safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      allowEmptyValues: true, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
+      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+      silent: true, // hide any errors
+      defaults: false // load '.env.defaults' as the default values if empty.
     })
   ]
 }

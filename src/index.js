@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { applyMiddleware, createStore } from 'redux';
 import { AppContainer } from 'react-hot-loader';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from 'modules/index';
 import App from './App';
-import './style.css';
-import './scss.scss';
+import 'assets/css/style.css';
+import 'assets/css/scss.scss';
 
 const history = createBrowserHistory();
 
@@ -18,13 +18,15 @@ const store = createStore(
   composeWithDevTools(applyMiddleware())
 );
 
+console.log(process.env.KAKAO_API_KEY);
+
 const render = () => { // this function will be reused
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <BrowserRouter history={history}>
+        <Router history={history}>
           <App />
-        </BrowserRouter>
+        </Router>
       </Provider>
     </AppContainer>,
     document.getElementById('root')
