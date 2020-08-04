@@ -1,25 +1,14 @@
 import React from 'react';
-import { Route, Switch, Link, } from 'react-router-dom';
 import CounterContainer from 'containers/CounterContainer';
-import Home from 'routes/Home';
-import About from 'routes/About';
+import Header from 'components/Header';
+import RouteBody from 'routes/index';
 
 const App = () => {
   return (
     <div>
       <CounterContainer />
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/about" component={About} />
-      </Switch>
+      <Header />
+      <RouteBody />
     </div>
   )
 };

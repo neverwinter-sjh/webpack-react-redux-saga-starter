@@ -13,6 +13,12 @@ module.exports = {
   // 모듈 설정
   module: {
     rules: [
+      { // pre 설정으로 eslint부터 로드하도록 설정
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
       { // js, jsx 파일을 babel-loader로 해석하여 트랜스파일링한다.
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -32,6 +38,12 @@ module.exports = {
         ],
       },
 
+      // 파일 로더(주로 폰트 파일)
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: 'file-loader'
+      },
+
       // 이미지 로더
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -41,6 +53,10 @@ module.exports = {
           name: '[name].[hash:7].[ext]',
           esModule: false
         }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'file-loader'
       }
     ],
   },

@@ -1,9 +1,10 @@
 const { merge } = require('webpack-merge');
-const webpack = require('webpack');
 const path = require('path');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const port = process.env.PORT || 3000;
+const chalk = require('react-dev-utils/chalk');
+const clearConsole = require('react-dev-utils/clearConsole');
 
 module.exports = merge(common, {
   // 개발환경
@@ -32,13 +33,22 @@ module.exports = merge(common, {
   ],
 
   // 개발용 서버 설정
-  devServer: {
-    host: 'localhost',
-    port: port,
-    open: false,
-    hot: true,
-    historyApiFallback: true
-  },
+  // devServer: {
+  //   host: 'localhost',
+  //   port: port,
+  //   open: false,
+  //   hot: true,
+  //   historyApiFallback: true,
+  //   noInfo: true,
+  //   stats: {
+  //     cached: false,
+  //     cachedAssets: false,
+  //     chunks: false,
+  //     chunkModules: false,
+  //     chunkOrigins: false,
+  //     modules: false
+  //   }
+  // },
 
   devtool: 'inline-source-map',
 
