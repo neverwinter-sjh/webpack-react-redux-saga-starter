@@ -25,6 +25,7 @@ const copyPublicFolder = () => {
     filter: file => file !== paths.appHtml,
   });
 }
+
 const build = () => {
   console.log('Creating an optimized production build...');
   console.time('Build done in');
@@ -32,7 +33,7 @@ const build = () => {
   copyPublicFolder();
   compiler.run((err, stats) => {
     if (err) console.log(chalk.yello(err));
-    console.timeEnd('Build done in');  
+    console.timeEnd('Build done in');      
     console.log(chalk.green('Compiled successfully.\n'));
   }); 
 }

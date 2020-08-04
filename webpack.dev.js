@@ -47,16 +47,5 @@ module.exports = merge(common, {
   //   }
   // },
 
-  devtool: 'inline-source-map',
-
-  // alias 설정
-  resolve: {
-    alias: {
-      components: path.resolve(__dirname, 'src/components'),
-      containers: path.resolve(__dirname, 'src/containers'),
-      modules: path.resolve(__dirname, 'src/modules'),
-      routes: path.resolve(__dirname, 'src/routes'),
-      assets: path.resolve(__dirname, 'src/assets')
-    }
-  }
+  devtool: 'inline-source-map'  
 });

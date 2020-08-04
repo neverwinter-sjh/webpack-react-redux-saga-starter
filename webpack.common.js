@@ -1,3 +1,4 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
@@ -7,6 +8,7 @@ module.exports = {
 
   // 번들링 결과 파일 설정
   output: {
+    publicPath: '/',
     filename: 'bundle.[hash].js'
   },
 
@@ -68,5 +70,15 @@ module.exports = {
       silent: true, // hide any errors
       defaults: false // load '.env.defaults' as the default values if empty.
     })
-  ]
+  ],
+  // alias 설정
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, 'src/components'),
+      containers: path.resolve(__dirname, 'src/containers'),
+      modules: path.resolve(__dirname, 'src/modules'),
+      routes: path.resolve(__dirname, 'src/routes'),
+      assets: path.resolve(__dirname, 'src/assets')
+    }
+  }
 }

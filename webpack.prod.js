@@ -1,11 +1,10 @@
 const { merge } = require('webpack-merge');
-const webpack = require('webpack');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   // 빌드 환경
   mode: 'production',
-
+  
   // 모듈 설정
   module: {
     rules: [
