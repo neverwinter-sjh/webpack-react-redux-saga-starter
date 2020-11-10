@@ -1,4 +1,4 @@
-# React Redux Saga Starter
+# Webpack React Redux Saga Starter
 
 React, Redux, React Router, Redux-saga로 설정된 starter boilderplate입니다.
 
